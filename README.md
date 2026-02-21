@@ -1,1 +1,1 @@
-# OOP-Training
+# OOP-C# Course
