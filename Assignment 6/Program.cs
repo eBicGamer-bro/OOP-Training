@@ -4,26 +4,26 @@ namespace Assignment_6
 {
     public class StopWatch
     {
-        private DateTime startTime;
+        private DateTime _startTime;
         public TimeSpan duration {  get; private set; }
-        private bool started = false;
+        private bool _started = false;
         public void StartTheStopWatch()
         {
-            if (started)
+            if (_started)
             {
                throw new InvalidOperationException("Stopwatch is already running.");
             }
-            startTime = DateTime.Now;
-            started = true;
+            _startTime = DateTime.Now;
+            _started = true;
         }
         public void StopTheStopWatch()
         {
-            if (!started)
+            if (!_started)
             {
                 throw new InvalidOperationException("Stopwatch is not running.");
             }
-            duration = DateTime.Now - startTime;
-            started = false;
+            duration = DateTime.Now - _startTime;
+            _started = false;
         }
         
     }
@@ -69,3 +69,4 @@ namespace Assignment_6
         }
     }
 }
+
