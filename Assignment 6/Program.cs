@@ -4,31 +4,60 @@ namespace Assignment_6
 {
     public class StackOverFlowPost
     {
-        public string title;
-        public string description;
-        private int _upVote,_downVote;
+        private string _title;
+        private string _description;
+        private int _currentValue;
         public DateTime createdAt { get; private set; }
         public StackOverFlowPost(string title, string description)
         {
-            this.title = title;
-            this.description = description;
+            if (string.IsNullOrEmpty(title))
+                throw new InvalidOperationException("title cannot me empty");
+            if (string.IsNullOrEmpty(description))
+                throw new InvalidOperationException("description cannot me empty");
+            this._title = title;
+            this._description = description;
             createdAt = DateTime.Now;
-            _downVote = 0;
-            _upVote = 0;
+            _currentValue = 0;
         }
         public void UpVote()
         {
-            _upVote++;
+            _currentValue++;
         }
         public void DownVote()
         {
-            _downVote++;
+            _currentValue--;
         }
-        public string GetCurrentValue()
+        public int GetCurrentValue()
         {
-            return "Up Votes: " + _upVote + "  Down Votes: " + _downVote;
+            return _currentValue;
         }
-
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                if(string.IsNullOrEmpty(value))
+                    throw new InvalidOperationException("title cannot me empty");
+                _title = value;
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                if(string.IsNullOrEmpty(value))
+                    throw new InvalidOperationException("description cannot me empty");
+                _description = value;
+            }
+        }
+      
     }
     internal class Program
     {
@@ -37,8 +66,8 @@ namespace Assignment_6
             StackOverFlowPost stackOverFlowPost = new StackOverFlowPost("C# Basics", "OOP Encapsulation importance");
             do
             {
-                Console.WriteLine(stackOverFlowPost.title);
-                Console.WriteLine(stackOverFlowPost.description);
+                Console.WriteLine(stackOverFlowPost.Title);
+                Console.WriteLine(stackOverFlowPost.Description);
                 Console.WriteLine(stackOverFlowPost.createdAt);
                 Console.WriteLine(stackOverFlowPost.GetCurrentValue());
 
