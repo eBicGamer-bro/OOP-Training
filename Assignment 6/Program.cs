@@ -5,13 +5,13 @@ namespace Assignment_6
     public class StopWatch
     {
         private DateTime _startTime;
-        public TimeSpan duration {  get; private set; }
+        private TimeSpan _duration;
         private bool _started = false;
         public void StartTheStopWatch()
         {
             if (_started)
             {
-               throw new InvalidOperationException("Stopwatch is already running.");
+                throw new InvalidOperationException("Stopwatch is already running.");
             }
             _startTime = DateTime.Now;
             _started = true;
@@ -22,10 +22,19 @@ namespace Assignment_6
             {
                 throw new InvalidOperationException("Stopwatch is not running.");
             }
-            duration = DateTime.Now - _startTime;
+            _duration = DateTime.Now - _startTime;
             _started = false;
         }
-        
+        public TimeSpan Duration
+        {
+            get
+            {
+                if (_started)
+                    return DateTime.Now - _startTime;
+                return _duration;
+            }
+        }
+
     }
     internal class Program
     {
@@ -40,7 +49,7 @@ namespace Assignment_6
             {
                 string choose = Console.ReadLine();
                 int x = Convert.ToInt32(choose);
-                if( x == 0)
+                if (x == 0)
                 {
                     watch.StartTheStopWatch();
                     Console.WriteLine("Stopwatch started.");
@@ -52,7 +61,7 @@ namespace Assignment_6
                 }
                 else if (x == 2)
                 {
-                    Console.WriteLine($"Elapsed time: {watch.duration}");
+                    Console.WriteLine($"Elapsed time: {watch.Duration}");
                 }
                 else if (x == 3)
                 {
@@ -69,4 +78,3 @@ namespace Assignment_6
         }
     }
 }
-
