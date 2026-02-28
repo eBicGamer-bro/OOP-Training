@@ -14,7 +14,7 @@
                 throw new InvalidOperationException("model can't be empty");
             if (string.IsNullOrWhiteSpace(year) || string.IsNullOrWhiteSpace(year))
                 throw new InvalidOperationException("year can't be empty");
-            if(!int.TryParse(year, out int temp) || temp < 2000 || temp > 2026)
+            if(!int.TryParse(year, out int temp) || temp < 2000 || temp > DateTime.Now.Year)
                 throw new InvalidOperationException("Invalid Year");
             _year = temp;
             _brand = brand;
@@ -132,3 +132,4 @@
         }
     }
 }
+
