@@ -47,6 +47,13 @@ namespace Assignment_7
                 return _accountNumber;
             }
         }
+        public double Balance
+        {
+            get
+            {
+                return _balance;
+            }
+        }
         public abstract void Withdraw(double amount);
         
         public void Deposit(double amount)
@@ -81,7 +88,7 @@ namespace Assignment_7
         public override void ShowAccountDetails()
         {
 
-            Console.WriteLine($"Owner name: {OwnerName} | Account Number: {AccountNumber} | Balance: {_balance} | Created Date: {CreatedDate} | Account Type: Savings Account.");
+            Console.WriteLine($"Owner name: {OwnerName} | Account Number: {AccountNumber} | Balance: {Balance} | Created Date: {CreatedDate} | Account Type: Savings Account.");
         }
     }
     public class CurrentAccount : Account
@@ -91,7 +98,7 @@ namespace Assignment_7
         public override void ShowAccountDetails()
         {
 
-            Console.WriteLine($"Owner name: {OwnerName} | Account Number: {AccountNumber} | Balance: {_balance} | Created Date: {CreatedDate} | Account Type: Current Account.");
+            Console.WriteLine($"Owner name: {OwnerName} | Account Number: {AccountNumber} | Balance: {Balance} | Created Date: {CreatedDate} | Account Type: Current Account.");
         }
 
         public override void Withdraw(double amount)
