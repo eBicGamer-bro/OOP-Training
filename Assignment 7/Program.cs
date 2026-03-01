@@ -36,7 +36,7 @@ namespace Assignment_7
         }
         public int Quantity
         {
-            set
+            private set
             {
                 if (value < 0)
                     throw new InvalidOperationException("quantity can't be less than 0");
@@ -62,35 +62,43 @@ namespace Assignment_7
         }
         public double CalculatePrice(int quantity)
         {
+            
+            if (quantity < 1 || quantity > Quantity)
+                throw new InvalidOperationException("Quantity can't be less than 1 or more than the products quantity");
+            Quantity -= quantity;
             return quantity * _price;
         }
         public double CalculatePrice(int quantity, double discount)
         {
             return quantity * _price * (1 - discount / 100);
         }
+        public void Restock()//Since the set for quantity is private I added a restock method with a constant amount for each restock
+        {
+            Quantity += 10;
+        }
     }
-        public class Course : Product
-        {
-            public Course(string name, int quantity, double price) : base(name, quantity, price) {}
-            
-        }
-        public class Gadget : Product
-        {
-            public Gadget(string name, int quantity, double price) : base(name, quantity, price){}
-        }
-        public class Clothing : Product
-        {
-            public Clothing(string name, int quantity, double price) : base(name, quantity, price) { }
-        }
-    
+    public class Course : Product
+    {
+        public Course(string name, int quantity, double price) : base(name, quantity, price) { }
+
+    }
+    public class Gadget : Product
+    {
+        public Gadget(string name, int quantity, double price) : base(name, quantity, price) { }
+    }
+    public class Clothing : Product
+    {
+        public Clothing(string name, int quantity, double price) : base(name, quantity, price) { }
+    }
+
     public class ShoppingCart
     {
-        private Dictionary<string,int> _products;
+        private Dictionary<Product, int> _products;
         private double _totalPrice;
         private StringBuilder transactions;
         public ShoppingCart()
         {
-            _products = new Dictionary<string, int>();
+            _products = new Dictionary<Product, int>();
             _totalPrice = 0.0;
             transactions = new StringBuilder();
             transactions.AppendLine("Shopping Cart Details:\n");
@@ -98,18 +106,14 @@ namespace Assignment_7
         public void PurchaseProduct(Product product, int quantity, double? discount = 0)
         {
             double currentPrice;
-            if (quantity < 1 || quantity > product.Price)
-                throw new InvalidOperationException("quantity can't be less than 1 or more than the products quantity");
-            if (!_products.ContainsKey(product.Name))
-                _products[product.Name] = quantity;
-            else _products[product.Name] = quantity + _products.GetValueOrDefault(product.Name);
-            product.Quantity -= quantity;
-            if (discount.HasValue)
-                if (discount < 0)
-                    throw new InvalidOperationException("Discount can't be less than 0");
-                else
-                currentPrice = product.CalculatePrice(quantity, (double)discount);
-            else currentPrice = product.CalculatePrice(quantity);
+            if (!_products.ContainsKey(product))
+                _products[product] = quantity;
+            else _products[product] = quantity + _products.GetValueOrDefault(product);
+            if (discount < 0)
+                throw new InvalidOperationException("Discount can't be less than 0");
+            else if (discount == 0)
+                currentPrice = product.CalculatePrice(quantity);
+            else currentPrice = product.CalculatePrice(quantity, (double)discount);
             _totalPrice += currentPrice;
             transactions.AppendLine($"{product.Name} | Price: ${product.Price} | Quantity: {quantity}\nTotal Price: ${currentPrice}\n");
         }
@@ -118,7 +122,7 @@ namespace Assignment_7
             Console.WriteLine($"{transactions}\nGrand Total for Cart: ${_totalPrice}");
         }
     }
-   
+
     internal class Program
     {
         static void Main(string[] args)
