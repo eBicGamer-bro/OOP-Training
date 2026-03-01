@@ -22,12 +22,6 @@ namespace Assignment_7
         }
         public string OwnerName
         {
-            set
-            {
-                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-                    throw new InvalidOperationException("Owner name can't be empty");
-                _ownerName = value;
-            }
             get
             {
                 return _ownerName;
@@ -68,6 +62,7 @@ namespace Assignment_7
     }
     public class SavingsAccount : Account
     {
+        private const decimal _interestRate = 0.05m;
         public SavingsAccount(string ownerName) : base(ownerName){}
         public override void Withdraw(double amount)
         {
@@ -82,7 +77,7 @@ namespace Assignment_7
         }
         public void MonthlyInterest()
         {
-            _balance += _balance * 0.05;
+            _balance += _balance*(double)_interestRate;
         }
 
         public override void ShowAccountDetails()
