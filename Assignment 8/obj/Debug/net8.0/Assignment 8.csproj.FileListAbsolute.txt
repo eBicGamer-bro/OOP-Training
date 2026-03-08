@@ -1,0 +1,14 @@
+D:\College\Backend Track Course\Assignments\Assignment 8\bin\Debug\net8.0\Assignment 8.exe
+D:\College\Backend Track Course\Assignments\Assignment 8\bin\Debug\net8.0\Assignment 8.deps.json
+D:\College\Backend Track Course\Assignments\Assignment 8\bin\Debug\net8.0\Assignment 8.runtimeconfig.json
+D:\College\Backend Track Course\Assignments\Assignment 8\bin\Debug\net8.0\Assignment 8.dll
+D:\College\Backend Track Course\Assignments\Assignment 8\bin\Debug\net8.0\Assignment 8.pdb
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.AssemblyInfoInputs.cache
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.AssemblyInfo.cs
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.csproj.CoreCompileInputs.cache
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.dll
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\refint\Assignment 8.dll
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.pdb
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\Assignment 8.genruntimeconfig.cache
+D:\College\Backend Track Course\Assignments\Assignment 8\obj\Debug\net8.0\ref\Assignment 8.dll
